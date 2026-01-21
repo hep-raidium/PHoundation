@@ -1,6 +1,6 @@
 # PHoundation
 
-This is the repository associated with the paper "Predicting clinically significant portal hypertension: foundation models versus automated non-invasive tests". The paper benchmarks several non-invasive tests, including foundation models, to estimate the severity of portal hypertension (PH). 
+This is the repository associated with the paper "Estimating clinically significant portal hypertension: foundation models versus automated non-invasive tests". The paper benchmarks several non-invasive tests, including foundation models, to estimate the severity of portal hypertension (PH). 
 This repository enables training a cross-validated regression to predict Hepatic Venous Pressure Gradient (HVPG) using a set of numerical features.
 
 # How to install?
