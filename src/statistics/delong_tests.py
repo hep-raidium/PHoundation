@@ -9,33 +9,33 @@ from MLstatkit.stats import Delong_test
 
 
 RESULTS_PATHS = {
-    "rarm": {
-        "internal": Path("curia/pca_10/l2/probas_test_internal_post_processed.csv"),
-        "external": Path("curia/pca_10/l2/probas_test_external_post_processed.csv"),
+    "curia": {
+        "internal": Path("foundation_model_curia/probas_test_internal.csv"),
+        "external": Path("foundation_model_curia/probas_test_external.csv"),
     },
     "medimage": {
-        "internal": Path("medimageinsight/pca_20/l2/probas_test_internal_post_processed.csv"),
-        "external": Path("medimageinsight/pca_20/l2/probas_test_external_post_processed.csv"),
+        "internal": Path("foundation_model_medimageinsight/probas_test_internal_post_processed.csv"),
+        "external": Path("foundation_model_medimageinsight/probas_test_external_post_processed.csv"),
     },
     "biomed": {
-        "internal": Path("biomedclip/pca_10/l2/probas_test_internal_post_processed.csv"),
-        "external": Path("biomedclip/pca_10/l2/probas_test_external_post_processed.csv"),
+        "internal": Path("foundation_model_biomedclip/probas_test_internal_post_processed.csv"),
+        "external": Path("foundation_model_biomedclip/probas_test_external_post_processed.csv"),
     },
     "morpho": {
-        "internal": Path("morphology/l1/all_morpho_features/probas_test_internal.csv"),
-        "external": Path("morphology/l1/all_morpho_features/probas_test_external.csv"),
+        "internal": Path("morphology/probas_test_internal.csv"),
+        "external": Path("morphology/probas_test_external.csv"),
     },
     "radiomics": {
-        "internal": Path("radiomics/pca_all_10/l2/probas_test_internal.csv"),
-        "external": Path("radiomics/pca_all_10/l2/probas_test_external.csv"),
+        "internal": Path("radiomics/probas_test_internal.csv"),
+        "external": Path("radiomics/probas_test_external.csv"),
     },
     "lsn": {
-        "internal": Path("morphology/l2/lsn/probas_test_internal.csv"),
-        "external": Path("morphology/l2/lsn/probas_test_external.csv"),
+        "internal": Path("radiologist_assisted/probas_test_internal.csv"),
+        "external": Path("radiologist_assisted/probas_test_external.csv"),
     },
     "serum_clinical": {
-        "internal": Path("morphology/l2/serum/probas_test_internal.csv"),
-        "external": Path("morphology/l2/serum/probas_test_external.csv"),
+        "internal": Path("serum/probas_test_internal.csv"),
+        "external": Path("serum/probas_test_external.csv"),
     },
 }
 
@@ -61,7 +61,7 @@ def prepare_df(model_name: str, base_path: Path, threshold: float):
 
 def main(base_path: Path, output_dir: Path, significance_level: float, threshold: float):
 
-    rarm_internal, rarm_external = prepare_df("rarm", base_path, threshold)
+    curia_internal, curia_external = prepare_df("curia", base_path, threshold)
     medimage_internal, medimage_external = prepare_df("medimage", base_path, threshold)
     biomed_internal, biomed_external = prepare_df("biomed", base_path, threshold)
     morpho_internal, morpho_external = prepare_df("morpho", base_path, threshold)
@@ -73,7 +73,7 @@ def main(base_path: Path, output_dir: Path, significance_level: float, threshold
     list_of_combinations_internal = list(
         permutations(
             [
-                ("rarm", rarm_internal),
+                ("curia", curia_internal),
                 ("biomed", biomed_internal),
                 ("medimage", medimage_internal),
                 ("morpho", morpho_internal),
@@ -88,7 +88,7 @@ def main(base_path: Path, output_dir: Path, significance_level: float, threshold
     list_of_combinations_external = list(
         permutations(
             [
-                ("rarm", rarm_external),
+                ("curia", curia_external),
                 ("biomed", biomed_external),
                 ("medimage", medimage_external),
                 ("morpho", morpho_external),
