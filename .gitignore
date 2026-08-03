@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Outputs produced by the scripts
+results/
+Delong_test_results/
+
+# OS
+.DS_Store

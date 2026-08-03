@@ -1,0 +1,31 @@
+[project]
+name = "phoundation"
+version = "0.2.0"
+description = "Benchmarking foundation models and automated non-invasive tests for clinically significant portal hypertension"
+authors = [{ name = "Raidium" }]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "matplotlib>=3.9.0,<4",
+    "nibabel>=5.2.1,<6",
+    "numpy>=2.0",
+    "pandas>=2.0",
+    "joblib>=1.3",
+    "scipy>=1.11",
+    "scikit-learn>=1.3.2,<2",
+    "seaborn>=0.13.2,<0.14",
+    "pingouin>=0.5.5,<0.6",
+    "tqdm>=4.67.1,<5",
+    "mlstatkit>=0.1.7,<0.2",
+    "SimpleITK>=2.3",
+]
+
+# PyRadiomics has no wheels for recent Python versions and its 3.1.0 sdist does not build,
+# so src/radiomics/extract_radiomics_features.py must be run from a separate Python 3.9
+# environment. See the "Extract radiomics features" section of the README.
+[project.optional-dependencies]
+radiomics = ["pyradiomics>=3.1.0,<4"]
+
+# This repository is a collection of standalone scripts, not an installable package.
+[tool.uv]
+package = false

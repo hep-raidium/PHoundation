@@ -1,0 +1,50 @@
+{
+    "combinations": [
+        {
+            "name": "lsn",
+            "features": [
+                "lsn"
+            ]
+        },
+        {
+            "name": "clinical",
+            "features": [
+                "age",
+                "sex",
+                "bmi"
+            ]
+        },
+        {
+            "name": "serum",
+            "features": [
+                "bilirubine",
+                "platelets",
+                "INR"
+            ]
+        },
+        {
+            "name": "all_morpho_features",
+            "features": [
+                "lsvr",
+                "left_to_liver",
+                "right_to_liver",
+                "posterior_to_right",
+                "couinaud_ratio",
+                "diameter_pv_to_volume_liver",
+                "diameter_pv_to_volume_pv",
+                "pv_volume_to_liver",
+                "IV_to_left",
+                "volume_liver",
+                "volume_spleen",
+                "segment_1_to_liver",
+                "segment_2_to_liver",
+                "segment_3_to_liver",
+                "segment_4_to_liver",
+                "segment_5_to_liver",
+                "segment_6_to_liver",
+                "segment_7_to_liver",
+                "segment_8_to_liver"
+            ]
+        }
+    ]
+}

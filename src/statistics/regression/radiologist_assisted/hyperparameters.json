@@ -1,0 +1,17 @@
+{
+    "best_params": {
+        "alpha": 1
+    },
+    "param_grid": {
+        "alpha": [
+            0.05,
+            0.1,
+            0.5,
+            1
+        ]
+    },
+    "best_estimator": "Ridge(alpha=1, max_iter=1000, random_state=42, solver='saga')",
+    "scoring": "neg_mean_squared_error",
+    "scaler": "StandardScaler()",
+    "splitter": "GroupKFold(n_splits=5, random_state=42, shuffle=True)"
+}
