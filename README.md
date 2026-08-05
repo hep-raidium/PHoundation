@@ -6,7 +6,7 @@ This repository enables training a cross-validated regression to predict Hepatic
 # How to install?
 
 Run `uv sync` in your terminal to create the environment and install the dependencies.
-If you do not have `uv`, install it with `pipx install uv` (or follow https://docs.astral.sh/uv/getting-started/installation/).
+If you do not have `uv`, install it with `pipx install uv`. 
 Make sure you have Python >= 3.12 installed.
 
 Prefix commands with `uv run` to execute them inside that environment.
@@ -40,9 +40,8 @@ Use "biomarkers" to train one model per feature combination listed in `src/bioma
 
 ## Selecting the number of PCA components
 
-Features can be fed to `train.py` as they are, or reduced by PCA beforehand. The number of components is chosen automatically with the Bayesian Information Criterion (BIC) rather than swept over a fixed grid.
-
-scikit-learn's `PCA` is a Gaussian probabilistic PCA model, so for each candidate dimensionality the total log-likelihood on the standardised training features is combined with the model's free-parameter count to give a BIC; the selected number of components is the argmin. The scaler and the PCA are fit on the **train split only**, and the endpoints (`hvpg`, `csph`) are always excluded, so nothing leaks into the reduction.
+Features can be fed to `train.py` as they are, or reduced by PCA beforehand. The number of components is chosen automatically with the Bayesian Information Criterion (BIC). 
+The scaler and the PCA are fit on the **train split only**, and the endpoints (`hvpg`, `csph`) are always excluded, so nothing leaks into the reduction.
 
 ```bash
 uv run python utils/select_pca_components.py \
@@ -62,14 +61,9 @@ An example of how to compute the portal vein's largest diameter is displayed in 
 
 ## Extract radiomics features
 
-An example of how to extract radiomics features is displayed in `src/radiomics/extract_radiomics_features.py`.
+An example of how radiomics features were extracted is displayed in `src/radiomics/extract_radiomics_features.py`.
+PyRadiomics cannot be run with Python 3.12 installed in this repository. Run this script from a separate Python 3.9 environment. 
 
-PyRadiomics ships no wheels for recent Python versions, so it is declared as an optional dependency and is **not** installed by `uv sync`. Run this script from a separate Python 3.9 environment:
-
-```bash
-uv run --python 3.9 --with pyradiomics --with SimpleITK python src/radiomics/extract_radiomics_features.py \
-    --dataset_path path/to/dataset
-```
 
 ## Re-run statistical analysis
 
@@ -78,4 +72,4 @@ The predictions of all the models of the article are stored in `src/statistics/r
 uv run python src/statistics/delong_tests.py
 ```
 
-Use `--threshold 10` (default) or `--threshold 16` to select the HVPG cut-off. The pairwise test covers the five models compared in the paper; BiomedCLIP and MedImageInsight are reported separately and are commented out in `RESULTS_PATHS` usage — uncomment them in `main()` to include them.
+The pairwise test covers the five models compared in the paper; BiomedCLIP and MedImageInsight are reported separately and are commented out in `RESULTS_PATHS` usage — uncomment them in `main()` to include them.
